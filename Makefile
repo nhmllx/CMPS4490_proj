@@ -1,8 +1,9 @@
-all: project
+all: background
 
-project: proj.cpp
-	g++ -o project proj.cpp -lGL -lGLU -lglut 
+background: background.cpp
+	g++ background.cpp -Wall -lX11 -lGL -lGLU -lm
 
 clean:
-	rm -f project
+	rm -f background a.out
+
 

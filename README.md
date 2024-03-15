@@ -18,5 +18,5 @@ git push
 
 git commit 
 
-git pull https://github.com/nhmllx/CMPS4490_proj.git -b master 
+git pull https://github.com/nhmllx/CMPS4490_proj.git -b main
 
