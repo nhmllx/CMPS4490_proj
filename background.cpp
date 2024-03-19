@@ -97,11 +97,10 @@ public:
 } g;
 
 class X11_wrapper {
-private:
+public:
 	Display *dpy;
 	Window win;
 	GLXContext glc;
-public:
 	X11_wrapper() {
 		GLint att[] = { GLX_RGBA, GLX_DEPTH_SIZE, 24, GLX_DOUBLEBUFFER, None };
 		//GLint att[] = { GLX_RGBA, GLX_DEPTH_SIZE, 24, None };
@@ -182,6 +181,7 @@ void check_mouse(XEvent *e);
 int check_keys(XEvent *e);
 void physics(void);
 void render(void);
+void render2(void);
 
 
 //===========================================================================
@@ -326,6 +326,11 @@ void check_mouse(XEvent *e)
             //printf("look: %i\n", savex);
             if (savex > g.xres*0.445 && savex < g.xres*0.605){
             printf("look: %i\n", savex);
+           // x11.cleanupXWindows();
+           render2();
+           printf("hi");
+          // XDestroyWindow(x11.dpy, x11.win);
+
             }
 			//Left button is down
 		}
@@ -396,6 +401,58 @@ void render()
 	glEnd();
 	glDisable(GL_ALPHA_TEST);
 }
+
+
+
+
+void render2()
+{
+    printf("g");
+/*	glClear(GL_COLOR_BUFFER_BIT);
+	glColor3f(1.0, 1.0, 1.0);
+    //draw background
+	glBindTexture(GL_TEXTURE_2D, g.tex.backTexture);
+	glBegin(GL_QUADS);//background
+		glTexCoord2f(g.tex.xc[0], g.tex.yc[1]); glVertex2i(0, 0);
+		glTexCoord2f(g.tex.xc[0], g.tex.yc[0]); glVertex2i(0, g.yres);
+		glTexCoord2f(g.tex.xc[1], g.tex.yc[0]); glVertex2i(g.xres, g.yres);
+		glTexCoord2f(g.tex.xc[1], g.tex.yc[1]); glVertex2i(g.xres, 0);
+	glEnd();
+    //draw background
+	glBindTexture(GL_TEXTURE_2D, g.elpis.backTexture);
+	glBegin(GL_QUADS);
+		glTexCoord2f(g.elpis.xc[0], g.elpis.yc[1]); glVertex2i(0, 0);
+		glTexCoord2f(g.elpis.xc[0], g.elpis.yc[0]); glVertex2i(0, 100);
+		glTexCoord2f(g.elpis.xc[1], g.elpis.yc[0]); glVertex2i(100, 100);
+		glTexCoord2f(g.elpis.xc[1], g.elpis.yc[1]); glVertex2i(100, 0);
+	glEnd();
+
+	glBindTexture(GL_TEXTURE_2D, g.squid.backTexture);
+	glEnable(GL_ALPHA_TEST);
+	glAlphaFunc(GL_GREATER, 0.0f);
+	glColor4ub(255,255,255,255);
+	glBegin(GL_QUADS); //start/placeholder
+		glTexCoord2f(g.squid.xc[0], g.squid.yc[1]); glVertex2i(g.xres/3, 30);
+		glTexCoord2f(g.squid.xc[0], g.squid.yc[0]); glVertex2i(g.xres/3, g.yres*0.50);
+		glTexCoord2f(g.squid.xc[1], g.squid.yc[0]); glVertex2i(g.xres*0.70, g.yres*0.50);
+		glTexCoord2f(g.squid.xc[1], g.squid.yc[1]); glVertex2i(g.xres * 0.70, 30);
+		//glTexCoord2f(g.squid.xc[0], g.squid.yc[1]); glVertex2i(100, 0);
+		//glTexCoord2f(g.squid.xc[0], g.squid.yc[0]); glVertex2i(100, 100);
+		//glTexCoord2f(g.squid.xc[1], g.squid.yc[0]); glVertex2i(200, 100);
+		//glTexCoord2f(g.squid.xc[1], g.squid.yc[1]); glVertex2i(200, 0);
+	glEnd();
+	glDisable(GL_ALPHA_TEST);*/
+}
+
+
+
+
+
+
+
+
+
+
 
 
 
