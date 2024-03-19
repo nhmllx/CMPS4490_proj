@@ -322,6 +322,11 @@ void check_mouse(XEvent *e)
 	}
 	if (e->type == ButtonPress) {
 		if (e->xbutton.button==1) {
+
+            //printf("look: %i\n", savex);
+            if (savex > g.xres*0.445 && savex < g.xres*0.605){
+            printf("look: %i\n", savex);
+            }
 			//Left button is down
 		}
 		if (e->xbutton.button==3) {
@@ -382,8 +387,8 @@ void render()
 	glBegin(GL_QUADS); //start/placeholder
 		glTexCoord2f(g.squid.xc[0], g.squid.yc[1]); glVertex2i(g.xres/3, 30);
 		glTexCoord2f(g.squid.xc[0], g.squid.yc[0]); glVertex2i(g.xres/3, g.yres*0.50);
-		glTexCoord2f(g.squid.xc[1], g.squid.yc[0]); glVertex2i(g.xres*0.75, g.yres*0.50);
-		glTexCoord2f(g.squid.xc[1], g.squid.yc[1]); glVertex2i(g.xres * 0.75, 30);
+		glTexCoord2f(g.squid.xc[1], g.squid.yc[0]); glVertex2i(g.xres*0.70, g.yres*0.50);
+		glTexCoord2f(g.squid.xc[1], g.squid.yc[1]); glVertex2i(g.xres * 0.70, 30);
 		//glTexCoord2f(g.squid.xc[0], g.squid.yc[1]); glVertex2i(100, 0);
 		//glTexCoord2f(g.squid.xc[0], g.squid.yc[0]); glVertex2i(100, 100);
 		//glTexCoord2f(g.squid.xc[1], g.squid.yc[0]); glVertex2i(200, 100);
