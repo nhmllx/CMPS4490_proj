@@ -74,7 +74,7 @@ public:
 };
 //Image img[1] = {"seamless_back.jpg"};
 //Image img[2] = {"seamless_back.jpg", "elpis.jpg"};
-Image img[3] = {"ce.avif", "elpis.png", "squid.png"};
+Image img[3] = {"ce.jpg", "elpis.png", "squid.png"};
 
 class Texture {
 public:
