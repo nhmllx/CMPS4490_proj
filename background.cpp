@@ -93,7 +93,7 @@ class Global {
         int flag;
 
         Global() {
-            xres=640, yres=480;
+            xres=1000, yres=800;
             flag = 1;
         }
 } g;
@@ -106,7 +106,7 @@ class X11_wrapper {
         X11_wrapper() {
             GLint att[] = { GLX_RGBA, GLX_DEPTH_SIZE, 24, GLX_DOUBLEBUFFER, None };
             //GLint att[] = { GLX_RGBA, GLX_DEPTH_SIZE, 24, None };
-            setup_screen_res(640, 480);
+            setup_screen_res(1000, 600);
             dpy = XOpenDisplay(NULL);
             if(dpy == NULL) {
                 printf("\n\tcannot connect to X server\n\n");
@@ -411,46 +411,30 @@ void render()
 
 
 
-
 void render2()
 {
-    printf("g");
-    /*	glClear(GL_COLOR_BUFFER_BIT);
-        glColor3f(1.0, 1.0, 1.0);
-    //draw background
-    glBindTexture(GL_TEXTURE_2D, g.tex.backTexture);
-    glBegin(GL_QUADS);//background
-    glTexCoord2f(g.tex.xc[0], g.tex.yc[1]); glVertex2i(0, 0);
-    glTexCoord2f(g.tex.xc[0], g.tex.yc[0]); glVertex2i(0, g.yres);
-    glTexCoord2f(g.tex.xc[1], g.tex.yc[0]); glVertex2i(g.xres, g.yres);
-    glTexCoord2f(g.tex.xc[1], g.tex.yc[1]); glVertex2i(g.xres, 0);
-    glEnd();
-    //draw background
-    glBindTexture(GL_TEXTURE_2D, g.elpis.backTexture);
-    glBegin(GL_QUADS);
-    glTexCoord2f(g.elpis.xc[0], g.elpis.yc[1]); glVertex2i(0, 0);
-    glTexCoord2f(g.elpis.xc[0], g.elpis.yc[0]); glVertex2i(0, 100);
-    glTexCoord2f(g.elpis.xc[1], g.elpis.yc[0]); glVertex2i(100, 100);
-    glTexCoord2f(g.elpis.xc[1], g.elpis.yc[1]); glVertex2i(100, 0);
+    glClear(GL_COLOR_BUFFER_BIT);
+    glColor3f(0.5f, 0.5f, 0.5f); // Set grid color
+
+    // Draw vertical lines
+    glBegin(GL_LINES);
+    for (int x = 0; x <= g.xres; x += 20) { // Adjust 20 for spacing
+        glVertex2i(x, 0);
+        glVertex2i(x, g.yres);
+    }
     glEnd();
 
-    glBindTexture(GL_TEXTURE_2D, g.squid.backTexture);
-    glEnable(GL_ALPHA_TEST);
-    glAlphaFunc(GL_GREATER, 0.0f);
-    glColor4ub(255,255,255,255);
-    glBegin(GL_QUADS); //start/placeholder
-    glTexCoord2f(g.squid.xc[0], g.squid.yc[1]); glVertex2i(g.xres/3, 30);
-    glTexCoord2f(g.squid.xc[0], g.squid.yc[0]); glVertex2i(g.xres/3, g.yres*0.50);
-    glTexCoord2f(g.squid.xc[1], g.squid.yc[0]); glVertex2i(g.xres*0.70, g.yres*0.50);
-    glTexCoord2f(g.squid.xc[1], g.squid.yc[1]); glVertex2i(g.xres * 0.70, 30);
-    //glTexCoord2f(g.squid.xc[0], g.squid.yc[1]); glVertex2i(100, 0);
-    //glTexCoord2f(g.squid.xc[0], g.squid.yc[0]); glVertex2i(100, 100);
-    //glTexCoord2f(g.squid.xc[1], g.squid.yc[0]); glVertex2i(200, 100);
-    //glTexCoord2f(g.squid.xc[1], g.squid.yc[1]); glVertex2i(200, 0);
+    // Draw horizontal lines
+    glBegin(GL_LINES);
+    for (int y = 0; y <= g.yres; y += 20) { // Adjust 20 for spacing
+        glVertex2i(0, y);
+        glVertex2i(g.xres, y);
+    }
     glEnd();
-    glDisable(GL_ALPHA_TEST);*/
+
+    // Swap buffers after drawing
+    x11.swapBuffers();
 }
-
 
 
 
